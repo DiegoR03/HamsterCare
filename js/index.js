@@ -284,6 +284,7 @@ function setLimit() {
 }
 
 // De komende drie functies zorgen ervoor dat de valuebuttons functioneel zijn en dat er een value af of bij komt
+// De code lijkt super veel op elkaar, maar als ik ze gebruik via parameters kloppen de functies niet meer :(
 function increaseHunger() {
     HungerValue += Math.floor(Math.random() * hungerValueIncrease);
     disableButton(feedKnop, "feed", "disabledfeed", 2000);
@@ -442,7 +443,7 @@ frame();
 // Zorgt ervoor dat bepaalde functies met inverallenn worden uitgevoerd, value van 1000ms = 1 seconde
 setInterval(updateCurrency, 10)
 setInterval(updateValues, 1250);
-setInterval(setLimit, 10)
+setInterval(setLimit, 100)
 setInterval(updateBar, 10)
 setInterval(Timer, 1000)
 setInterval(hamsterStateChange, 10)
