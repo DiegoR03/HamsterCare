@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamster Care</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="img/Icons/Food.png">
+</head>
+<body class="homebackground">
+    <h1 class="timer"></h1>
+    <h1 class="currentProblem" id="foodProblem"></h1> 
+    <h1 class="currentProblem" id="excerciseProblem"></h1>   
+    <h1 class="currentProblem" id="LoveProblem"></h1>    
+    
+    <section id="currencyBox">
+        <img id="currencyImg" src="img/Icons/FoodCurrency.png">
+        <h2 id="currency"></h2>
+        <h2 id="currentEnergy"></h2>
+    </section>
+
+    <section id="startScreen">
+        <label for="nameInput">What name will the hamster have?</label>
+        <br>
+        <input type="text" name="nameInput" id="nameInput">
+        <br>
+        <button id="confirmName">Confirm</button>
+    </section>
+
+    <section id="endScreen">
+        <h2 id="loseText">You lost...</h2>
+    </section>
+
+    <section id="shopOverlay">
+        <button id="foodItem1" class="foodButtonsFirstRow"><img src="img/ItemsCurrency/ZonnebloemPit.png" alt="Food-Icon"></button>
+        <button id="foodItem2" class="foodButtonsFirstRow"><img src="img/ItemsCurrency/Appel.png" alt="Food-Icon"></button>
+        <button id="foodItem3" class="foodButtonsFirstRow"><img src="img/ItemsCurrency/Komkommer.png" alt="Food-Icon"></button>
+        <button id="foodItem4" class="foodButtonsFirstRow"><img src="img/ItemsCurrency/Mais.png" alt="Food-Icon"></button>
+        <button id="foodItem5" class="foodButtonsFirstRow"><img src="img/ItemsCurrency/Wortel.png" alt="Food-Icon"></button>
+        <br>
+        <button id="foodItem6" class="foodButtonsSecondRow"><img src="img/ItemsCurrency/Snoepje.png" alt="Food-Icon"></button>
+        <button id="foodItem7" class="foodButtonsSecondRow"><img src="img/ItemsCurrency/Pinda.png" alt="Food-Icon"></button>
+        <button id="foodItem8" class="foodButtonsSecondRow"><img src="img/ItemsCurrency/Ball.png" alt="Food-Icon"></button>
+        <button id="foodItem9" class="foodButtonsSecondRow"><img src="img/ItemsCurrency/FoodBuff.png" alt="Food-Icon"></button>
+        <button id="foodItem10" class="foodButtonsSecondRow"><img src="img/ItemsCurrency/AffectionBuff.png" alt="Food-Icon"></button>
+    </section>
+
+    <section id="asleepOverlay">
+        <h2>The hamster is asleep....</h2>
+    </section>
+
+    <canvas></canvas>
+
+    <img class="arrow right" id="Right" src="img/Icons/ArrowRight.png" alt="Right Arrow Icon">
+    <img class="arrow left" id="Left" src="img/Icons/ArrowLeft.png" alt="Left Arrow Icon">
+
+    <img id="hamsterStatus" class="hamster" src="img/HamsterImages/Hamster.png" alt="Hamster Image">
+</body>
+
+<footer>
+    <button id="Shop" class="shopButton"><img src="img/Icons/Shop.png" alt="Shop-Icon"></button>
+    <button id="Feed" class="feed"><img id="foodIcon" src="img/Icons/Food.png" alt="Food-Icon"></button>
+    <button id="Energy" class="energy"><img id="energyIcon" src="img/Icons/Wheel.png" alt="Wheel-Icon"></button>
+    <button id="Affection" class="affection"><img src="img/Icons/Heart.png" alt="Heart-Icon"></button>
+    <button id="Sleep" class="sleepButton"><img src="img/Icons/Clock.png" alt="Clock-Icon"></button>
+</footer>
+
+<script src="js/valuebar.js"></script>
+<script src="js/index.js"></script>
+</html>

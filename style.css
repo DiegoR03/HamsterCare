@@ -1,0 +1,325 @@
+* {
+    margin: auto;
+}
+
+/* Bodies Make-up*/
+canvas {
+    text-align: left;
+    background-color: rgba(240, 248, 255, 0.705);
+    border-radius: 2vh;
+    border-color: black;
+    border-style: solid;
+    position:absolute; 
+    top: 0; 
+    left: 0;
+    display: inline-block;
+}
+
+footer {
+    background-color: rgb(42, 78, 102);
+    bottom: 0;
+    border-color: black;
+    border-style: solid;
+    width: 100%;
+    position: fixed;
+}
+
+
+input {
+    display: inline-block;
+    width: 12em;
+    top: -3em;
+    font-size: 4vh;
+    text-align: center;
+    border-radius: 3vh;
+    border-style: none;
+}
+  
+label {
+    display: inline-block;
+    width: 10em;
+    margin-right: .5em;
+    padding-top: 3em;
+}
+
+.homebackground {
+    text-align: center;
+    background-image: url(img/backgrounds/Background.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: auto;
+}
+
+.foodbackground {
+    text-align: center;
+    background-image: url(img/backgrounds/BackgroundFood.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: auto;
+}
+
+.excercisebackground {
+    text-align: center;
+    background-image: url(img/backgrounds/BackgroundExcercise.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: auto;
+}
+
+#startScreen{
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.575); 
+    z-index: 2; 
+    color: white;
+    font-size: 8vh;
+}
+
+#endScreen{
+    position: absolute; 
+    display: none;
+    width: 100%; 
+    height: 100%; 
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.575); 
+    z-index: 2; 
+}
+
+
+/* used a link for refrence code https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp */
+#asleepOverlay {
+    position: fixed; 
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2; 
+}
+
+#shopOverlay {
+    position: fixed; 
+    display: none; 
+    width: 960px;
+    height: 720px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(img/backgrounds/PetShop.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-color: black;
+    border-radius: 2vh;
+    border-style: solid;
+    z-index: 2; 
+}
+
+.sleepButton{
+    background-image: linear-gradient(rgb(0, 255, 123), rgb(50, 119, 68));
+    border-color: black;
+    border-style: solid;
+    right: 0;
+    position: fixed;
+}
+
+.sleepButton:active{
+    background-image: linear-gradient(rgb(0, 131, 63), rgb(23, 56, 32));
+}
+
+/* Text Make-up */
+h1 {
+    font-size: 3vh;
+}
+
+.currentProblem {
+    text-align: center;
+    width: 100vw;
+    margin-top: 75vh;
+    height: auto;
+    font-size: 2vw;
+    color: red;
+    position: fixed;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: red;
+}
+
+.timer {
+    display: block;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    margin-top: 4vh;
+    font-size: 10vh;
+    background-color: rgba(255, 0, 0, 0.566);
+}
+
+/* Elements/buttons Make-up */
+button {
+    margin: 1vw;
+    border-radius: 2vh;
+}
+
+.shopButton {
+    background-image: linear-gradient(rgb(192, 255, 255), rgb(64, 143, 163));
+    border-color: black;
+    border-style: solid;
+    left: 0;
+    position: fixed;
+}
+
+.shopButton:active {
+    background-image: linear-gradient(rgb(124, 162, 162), rgb(29, 66, 75));
+}
+
+.hamster{
+    margin-top: 20vh;
+    height: 60vh;
+    width: auto;
+}
+
+.feed {
+    background-image: linear-gradient(rgb(0, 25, 92), rgb(0, 68, 255));
+    border-color: black;
+    border-style: solid;
+    display: none;
+}
+
+.energy{
+    background-image: linear-gradient(rgb(92, 0, 0), red);
+    border-color: black;
+    border-style: solid;
+    display: none;
+} 
+
+.affection {
+    background-image: linear-gradient(rgb(91, 92, 0), rgb(200, 255, 0));
+    border-color: black;
+    border-style: solid;
+    display: inline-block;
+}
+
+.disabledfeed{
+    background-image: linear-gradient(rgb(34, 48, 85), rgb(99, 141, 255));
+    border-color: black;
+    border-style: solid;
+}
+
+.disabledeenergy {
+    background-image: linear-gradient(rgb(90, 42, 42), rgb(255, 120, 120));
+    border-color: black;
+    border-style: solid;
+}
+
+.disabledaffection {
+    background-image: linear-gradient(rgb(89, 90, 43), rgb(227, 255, 127));
+    border-color: black;
+    border-style: solid;
+}
+
+.foodButtonsFirstRow {
+    background-color: rgba(255, 255, 255, 0.322);
+    display: inline-block;
+    align-items: center;
+    margin-top: 24.5vh;
+}
+
+.foodButtonsFirstRow:active {
+    background-color: rgba(169, 169, 169, 0.322);
+    display: inline-block;
+    align-items: center;
+}
+
+.foodButtonsSecondRow{
+    background-color: rgb(255, 255, 255, 0.322);
+    display: inline-block;
+    align-items: center;
+    margin-top: 7vh;
+}
+
+.foodButtonsSecond:active {
+    background-color: rgba(169, 169, 169, 0.322);
+    display: inline-block;
+    align-items: center;
+}
+
+/* link to: https://www.w3schools.com/howto/howto_css_arrows.asp */
+.arrow {
+    display: inline-block;
+    padding: 3px;
+  }
+  
+.right {
+    margin-top: 40vh;
+    right: 0;
+    position: fixed;
+}
+  
+.left {
+    margin-top: 40vh;
+    left: 0;
+    position: fixed;
+}
+
+#confirmName{
+    background-color: #b62400; 
+    border: none;
+    color: white;
+    padding: 2vh;
+    font-size: 3vh;
+}
+
+#loseText{
+    padding-top: 40vh;
+    font-size: 10vh;
+    color: rgb(214, 0, 0);
+}
+
+#currencyBox{
+    text-align: right;
+    display: none;
+    position: fixed;
+    margin: 1.5vw;
+    font-size: 3vh;
+    right: 0;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    background-color: beige;
+    padding: 2vh;
+    border-radius: 2vh;
+    border-color: black;
+    border-style: solid;
+}
+
+#currencyImg{
+    position: fixed;
+    right: 33vh;
+    height: 7%;
+    margin-top: -1.5vh;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
