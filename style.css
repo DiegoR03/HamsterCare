@@ -236,7 +236,7 @@ button {
     background-color: rgba(255, 255, 255, 0.322);
     display: inline-block;
     align-items: center;
-    margin-top: 24.5vh;
+    margin-top: 19%;
 }
 
 .foodButtonsFirstRow:active {
@@ -249,7 +249,7 @@ button {
     background-color: rgb(255, 255, 255, 0.322);
     display: inline-block;
     align-items: center;
-    margin-top: 7vh;
+    margin-top: 5.5%;
 }
 
 .foodButtonsSecond:active {
