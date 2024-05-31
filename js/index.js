@@ -461,14 +461,9 @@ confirmName.addEventListener('click', saveName);
 
 // Deze laatste eventlisteners zijn anders dan de standaard, deze eventlisteners reguleren de shop buttons in de shop overlay, elke eeft zijn eigen berekening
 shopButton[7].addEventListener("click", energyDrainBuff);
-shopButton[8].addEventListener("click", () => { 
-    valueBuff(8);
-    HungerValue = 100;
-});
-shopButton[9].addEventListener("click", () => { 
-    valueBuff(8); 
-    AffectionValue = 100;
-});
+shopButton[8].addEventListener("click", () => { valueBuff(8); HungerValue = 100;});
+shopButton[9].addEventListener("click", () => { valueBuff(8); AffectionValue = 100;});
+
 for (let i = 0; i < 7; i++) {
     shopButton[i].addEventListener("click", function(){
         if(foodCurrency == (i + 1) || foodCurrency > (i + 1)){
