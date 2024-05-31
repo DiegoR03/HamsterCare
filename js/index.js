@@ -8,6 +8,72 @@
     Ik heb ook de code uit een video gebruikt en veranderd naar gebruik en toepassing voor mijn opdracht
     De link hiernaar toe is https://youtu.be/Wh2kVSPi_sE?si=cZQ6R1wQ8Q0zlcaY
 */
+// timer const
+const timerText = document.querySelector('.timer');
+
+// De constante van de knoppen die de value verhogen
+const feedKnop = document.querySelector('#Feed');
+const affectionKnop = document.querySelector('#Affection');
+const energyKnop = document.querySelector('#Energy');
+const sleepKnop = document.querySelector('#Sleep');
+const shopKnop = document.querySelector('#Shop');
+
+// De constante die de pijlen op het scherm verwerken
+const leftArrow = document.querySelector('#Left');
+const rightArrow = document.querySelector('#Right');
+
+// Alle hamster states in een array
+const hamsterStates = ["img/HamsterImages/Hamster.png", "img/HamsterImages/HamsterEating.png", "img/HamsterImages/HamsterExcercise.png", "img/HamsterImages/HamsterLoved.png"];
+const hamsterCurrentImg = document.getElementById("hamsterStatus");
+
+// de constante van de value bars boven in het scherm
+const canvas = document.querySelector('canvas')
+const context = canvas.getContext('2d')
+
+// De constante die de achtergrond onderhoudt en verandert
+const Background = document.body
+
+// De constante voor het toevoegen en zetten van een naam voor de hamster
+const nameInput = document.getElementById("nameInput");
+const confirmName = document.getElementById("confirmName")
+const startScreen = document.getElementById("startScreen")
+
+// De constante die de currency vanuit de html aanroepen en de totale currency reguleren
+const currencyBox = document.getElementById('currencyBox')
+const hamsterCurrency = document.getElementById('currency')
+const currentEnergy = document.getElementById('currentEnergy')
+
+const feedImage = document.getElementById('foodIcon')
+const energyImage = document.getElementById('energyIcon')
+
+const shopButton = [document.getElementById("foodItem1"), 
+                    document.getElementById("foodItem2"), 
+                    document.getElementById("foodItem3"), 
+                    document.getElementById("foodItem4"),
+                    document.getElementById("foodItem5"),
+                    document.getElementById("foodItem6"),
+                    document.getElementById("foodItem7"),
+                    document.getElementById("foodItem8"),
+                    document.getElementById("foodItem9"),
+                    document.getElementById("foodItem10")]
+
+const shopItems = ["img/Items/ZonnebloemPit.png", 
+                    "img/Items/Appel.png", 
+                    "img/Items/Komkommer.png", 
+                    "img/Items/Mais.png", 
+                    "img/Items/Wortel.png", 
+                    "img/Items/Snoepje.png", 
+                    "img/Items/Pinda.png", 
+                    "img/Items/Ball.png"]
+
+// De constante die ervoor zorgt dat er frames worden aangemaakt voor de valuebars
+const frame = function(){
+    context.clearRect(0, 0, width, height);
+    feedBar.show(context);
+    energyBar.show(context);
+    affectionBar.show(context);
+    requestAnimationFrame(frame);
+}
 
 // De values voor de Feed, Affection en Exercise bar, deze variabelen geven de waarde van de huidige honger, affection en excercise niveaus van de hamster
 let HungerValue = 100;
@@ -52,83 +118,52 @@ let chargedEnergy = 0;
 let itemUnlocked = false;
 let itemLocked = true;
 
-// timer const
-const timerText = document.querySelector('.timer');
 
-// De constante van de knoppen die de value verhogen
-const feedKnop = document.querySelector('#Feed');
-const affectionKnop = document.querySelector('#Affection');
-const energyKnop = document.querySelector('#Energy');
-const sleepKnop = document.querySelector('#Sleep');
-const shopKnop = document.querySelector('#Shop');
+let width = canvas.width = 220;
+let height = canvas.height = 220;
 
-// De constante die de pijlen op het scherm verwerken
-const leftArrow = document.querySelector('#Left');
-const rightArrow = document.querySelector('#Right');
-
-// Alle hamster states in een array
-const hamsterStates = ["img/HamsterImages/Hamster.png", "img/HamsterImages/HamsterEating.png", "img/HamsterImages/HamsterExcercise.png", "img/HamsterImages/HamsterLoved.png"];
-const hamsterCurrentImg = document.getElementById("hamsterStatus");
-
-// de constante van de value bars boven in het scherm
-const canvas = document.querySelector('canvas')
-const context = canvas.getContext('2d')
-const width = canvas.width = 220;
-const height = canvas.height = 220;
-
-const valueBarwidth = 180;
-const valueBarHeight = 30;
-const x = width / 2 - valueBarwidth / 2;
+let valueBarwidth = 180;
+let valueBarHeight = 30;
+let x = width / 2 - valueBarwidth / 2;
 
 // de constante van de value bars, hier worden de dimensies aangeroepen en bepaald
-const feedBar = new ValueBar(x, 40, valueBarwidth, valueBarHeight, HungerValue, "blue");
-const energyBar = new ValueBar(x, 90, valueBarwidth, valueBarHeight, EnergyValue, "red");
-const affectionBar = new ValueBar(x, 140, valueBarwidth, valueBarHeight, AffectionValue, "yellow");
+let feedBar;
+let energyBar;
+let affectionBar;
 
-// De constante die de achtergrond onderhoudt en verandert
-const Background = document.body
+/* Credit and source code from https://youtu.be/Wh2kVSPi_sE?si=cZQ6R1wQ8Q0zlcaY */
+class ValueBar {
+    constructor(x, y, w, h, maxValue, color){
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.maxValue = maxValue;
+        this.maxWidth = w;
+        this.value = maxValue;
+        this.color = color;
+    }
 
-// De constante voor het toevoegen en zetten van een naam voor de hamster
-const nameInput = document.getElementById("nameInput");
-const confirmName = document.getElementById("confirmName")
-const startScreen = document.getElementById("startScreen")
+    show(context){
+        context.lineWidth = 3.5;
+        context.strokeStyle = "#333";
+        context.fillStyle = this.color;
+        context.fillRect(this.x, this.y, this.w, this.h);
+        context.strokeRect(this.x, this.y, this.maxWidth, this.h);
+    }
 
-// De constante die de currency vanuit de html aanroepen en de totale currency reguleren
-const currencyBox = document.getElementById('currencyBox')
-const hamsterCurrency = document.getElementById('currency')
-const currentEnergy = document.getElementById('currentEnergy')
-
-const feedImage = document.getElementById('foodIcon')
-const energyImage = document.getElementById('energyIcon')
-
-const shopButton = [document.getElementById("foodItem1"), 
-                    document.getElementById("foodItem2"), 
-                    document.getElementById("foodItem3"), 
-                    document.getElementById("foodItem4"),
-                    document.getElementById("foodItem5"),
-                    document.getElementById("foodItem6"),
-                    document.getElementById("foodItem7"),
-                    document.getElementById("foodItem8"),
-                    document.getElementById("foodItem9"),
-                    document.getElementById("foodItem10")]
-
-let shopItems = ["img/Items/ZonnebloemPit.png", 
-                    "img/Items/Appel.png", 
-                    "img/Items/Komkommer.png", 
-                    "img/Items/Mais.png", 
-                    "img/Items/Wortel.png", 
-                    "img/Items/Snoepje.png", 
-                    "img/Items/Pinda.png", 
-                    "img/Items/Ball.png"]
-
-// De constante die ervoor zorgt dat er frames worden aangemaakt voor de valuebars
-const frame = function(){
-    context.clearRect(0, 0, width, height);
-    feedBar.show(context);
-    energyBar.show(context);
-    affectionBar.show(context);
-    requestAnimationFrame(frame);
+    updateValue(val){
+        if(val >= 0) {
+            this.value = val;
+            this.w = (this.value / this.maxValue) * this.maxWidth;
+        }
+    }
 }
+
+// de constante van de value bars, hier worden de dimensies aangeroepen en bepaald
+feedBar = new ValueBar(x, 40, valueBarwidth, valueBarHeight, HungerValue, "blue");
+energyBar = new ValueBar(x, 90, valueBarwidth, valueBarHeight, EnergyValue, "red");
+affectionBar = new ValueBar(x, 140, valueBarwidth, valueBarHeight, AffectionValue, "yellow");
 
 // De functie die ervoor zorgt dat de naam wordt opgeslagen en wordt gebruikt door de hele game heen
 function saveName() {
@@ -366,6 +401,7 @@ function openShop(){
     }
 }
 
+// Door gebruik te maken van let energyDecrease reguleer ik de decrease die van de EnergyValue wordt gehaald, ik verander ook de source van een foto
 function energyDrainBuff(){
     if(foodCurrency == 5 || foodCurrency > 5){
         energyDecrease = 40;
@@ -438,8 +474,9 @@ shopButton[8].addEventListener("click", () => {
     HungerValue = 100;
 });
 shopButton[9].addEventListener("click", () => { 
-    valueBuff(8); });
+    valueBuff(8); 
     AffectionValue = 100;
+});
 for (let i = 0; i < 7; i++) {
     shopButton[i].addEventListener("click", function(){
         if(foodCurrency == (i + 1) || foodCurrency > (i + 1)){
