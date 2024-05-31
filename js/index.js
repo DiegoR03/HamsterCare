@@ -1,13 +1,3 @@
-/* 
-    De main javascript file die alle main buttons handelt en ervoor zorgt dat alles goed functioneert.
-    In deze file vind je de volgende functions:
-    - increaseHunger
-    - increaseAffection
-    - increaseExercise
-
-    Ik heb ook de code uit een video gebruikt en veranderd naar gebruik en toepassing voor mijn opdracht
-    De link hiernaar toe is https://youtu.be/Wh2kVSPi_sE?si=cZQ6R1wQ8Q0zlcaY
-*/
 // timer const
 const timerText = document.querySelector('.timer');
 
@@ -43,9 +33,11 @@ const currencyBox = document.getElementById('currencyBox')
 const hamsterCurrency = document.getElementById('currency')
 const currentEnergy = document.getElementById('currentEnergy')
 
+// Images vam de buttons in de footer van de html
 const feedImage = document.getElementById('foodIcon')
 const energyImage = document.getElementById('energyIcon')
 
+// Alle buttons in de shop overlay in eenn Array
 const shopButton = [document.getElementById("foodItem1"), 
                     document.getElementById("foodItem2"), 
                     document.getElementById("foodItem3"), 
@@ -57,6 +49,7 @@ const shopButton = [document.getElementById("foodItem1"),
                     document.getElementById("foodItem9"),
                     document.getElementById("foodItem10")]
 
+// Alle foto's van de shop items in een Array
 const shopItems = ["img/Items/ZonnebloemPit.png", 
                     "img/Items/Appel.png", 
                     "img/Items/Komkommer.png", 
@@ -118,10 +111,9 @@ let chargedEnergy = 0;
 let itemUnlocked = false;
 let itemLocked = true;
 
-
+// De breedte en hoogte van de canvas voor de value bars
 let width = canvas.width = 220;
 let height = canvas.height = 220;
-
 let valueBarwidth = 180;
 let valueBarHeight = 30;
 let x = width / 2 - valueBarwidth / 2;
@@ -132,6 +124,7 @@ let energyBar;
 let affectionBar;
 
 /* Credit and source code from https://youtu.be/Wh2kVSPi_sE?si=cZQ6R1wQ8Q0zlcaY */
+// De class die value bars met preset parameters meegeeft
 class ValueBar {
     constructor(x, y, w, h, maxValue, color){
         this.x = x;
@@ -292,7 +285,6 @@ function setLimit() {
 
 // De komende drie functies zorgen ervoor dat de valuebuttons functioneel zijn en dat er een value af of bij komt
 function increaseHunger() {
-    // console.log("Hamster has been fed")
     HungerValue += Math.floor(Math.random() * hungerValueIncrease);
     disableButton(feedKnop, "feed", "disabledfeed", 2000);
     eatingAudio.play();
@@ -306,7 +298,6 @@ function increaseHunger() {
 }
 
 function increaseAffection() {
-    // console.log("Hamster has been loved")
     AffectionValue += Math.floor(Math.random() * 8);
     disableButton(affectionKnop, "affection", "disabledaffection", 2000);
     lovedAudio.play();
@@ -320,7 +311,6 @@ function increaseAffection() {
 }
 
 function decreaseEnergy() {
-    // console.log("Hamster went for a run")
     EnergyValue -= Math.floor(Math.random() * energyDecrease);
     disableButton(energyKnop, "energy", "disabledeenergy", 3500);
     isExcercising = true;
@@ -468,6 +458,7 @@ leftArrow.addEventListener('click', increaseArrow);
 rightArrow.addEventListener('click', decreaseArrow);
 confirmName.addEventListener('click', saveName);
 
+// Deze laatste eventlisteners zijn anders dan de standaard, deze eventlisteners reguleren de shop buttons in de shop overlay, elke eeft zijn eigen berekening
 shopButton[7].addEventListener("click", energyDrainBuff);
 shopButton[8].addEventListener("click", () => { 
     valueBuff(8);
