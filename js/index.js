@@ -161,7 +161,7 @@ affectionBar = new ValueBar(x, 140, valueBarwidth, valueBarHeight, affectionValu
 // De functie die ervoor zorgt dat de naam wordt opgeslagen en wordt gebruikt door de hele game heen
 function saveName() {
     hamsterName = nameInput.value;
-    if(nameInput.value == ""){
+    if(hamsterName == ""){
         nameIsChosen = false;
     } else {
         nameIsChosen = true;
