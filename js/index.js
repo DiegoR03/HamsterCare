@@ -21,7 +21,7 @@ const canvas = document.querySelector('canvas')
 const context = canvas.getContext('2d')
 
 // De constante die de achtergrond onderhoudt en verandert
-const Background = document.body
+const background = document.body
 
 // De constante voor het toevoegen en zetten van een naam voor de hamster
 const nameInput = document.getElementById("nameInput");
@@ -69,9 +69,9 @@ const frame = function(){
 }
 
 // De values voor de Feed, Affection en Exercise bar, deze variabelen geven de waarde van de huidige honger, affection en excercise niveaus van de hamster
-let HungerValue = 100;
-let AffectionValue = 100;
-let EnergyValue = 100;
+let hungerValue = 100;
+let affectionValue = 100;
+let energyValue = 100;
 
 let hungerValueIncrease = 3;
 let energyDecrease = 20;
@@ -154,9 +154,9 @@ class ValueBar {
 }
 
 // de constante van de value bars, hier worden de dimensies aangeroepen en bepaald
-feedBar = new ValueBar(x, 40, valueBarwidth, valueBarHeight, HungerValue, "blue");
-energyBar = new ValueBar(x, 90, valueBarwidth, valueBarHeight, EnergyValue, "red");
-affectionBar = new ValueBar(x, 140, valueBarwidth, valueBarHeight, AffectionValue, "yellow");
+feedBar = new ValueBar(x, 40, valueBarwidth, valueBarHeight, hungerValue, "blue");
+energyBar = new ValueBar(x, 90, valueBarwidth, valueBarHeight, energyValue, "red");
+affectionBar = new ValueBar(x, 140, valueBarwidth, valueBarHeight, affectionValue, "yellow");
 
 // De functie die ervoor zorgt dat de naam wordt opgeslagen en wordt gebruikt door de hele game heen
 function saveName() {
@@ -209,71 +209,71 @@ function hamsterStateChange() {
 // Deze functie zorgt ervoor dat er constant een value van de valuebars af gaat
 function updateValues() {
     if(nameIsChosen == true){
-        if(HungerValue <= 100){
-            HungerValue -= Math.floor(Math.random() * 2);
-        } else if (HungerValue <= 10){
-            HungerValue--
+        if(hungerValue <= 100){
+            hungerValue -= Math.floor(Math.random() * 2);
+        } else if (hungerValue <= 10){
+            hungerValue--
         }
     
-        if(AffectionValue <= 100 && hamsterSleepStatus == false){
-            AffectionValue -= Math.floor(Math.random() * 2);
-        } else if (AffectionValue <= 10 && hamsterSleepStatus == false){
-            AffectionValue--
+        if(affectionValue <= 100 && hamsterSleepStatus == false){
+            affectionValue -= Math.floor(Math.random() * 2);
+        } else if (affectionValue <= 10 && hamsterSleepStatus == false){
+            affectionValue--
         }
     }
 }
 
 // Deze functie houdt de valuebars bij en zorgt ervoor dat de values ook daadwerkelijk worden ge-update
 function updateBar(){
-    feedBar.updateValue(HungerValue);
-    energyBar.updateValue(EnergyValue);
-    affectionBar.updateValue(AffectionValue);
+    feedBar.updateValue(hungerValue);
+    energyBar.updateValue(energyValue);
+    affectionBar.updateValue(affectionValue);
 
-    if(HungerValue == 0){
+    if(hungerValue == 0){
         document.getElementById("foodProblem").style.display = "block";
         document.getElementById("foodProblem").textContent = hamsterName + " is very hungry...";
         timerActive = true;
-    } else if(HungerValue >= 0){
+    } else if(hungerValue >= 0){
         document.getElementById("foodProblem").style.display = "none";
     }
 
-    if(EnergyValue == 0){
+    if(energyValue == 0){
         document.getElementById("excerciseProblem").style.display = "block";
         document.getElementById("excerciseProblem").textContent = hamsterName + " is becoming less active...";
         timerActive = true;
-    } else if(EnergyValue >= 0) {
+    } else if(energyValue >= 0) {
         document.getElementById("excerciseProblem").style.display = "none";
     }
 
-    if(AffectionValue == 0){
+    if(affectionValue == 0){
         document.getElementById("LoveProblem").style.display = "block";
         document.getElementById("LoveProblem").textContent = hamsterName + " is very sad...";
         timerActive = true;
-    } else if(AffectionValue >= 0) {
+    } else if(affectionValue >= 0) {
         document.getElementById("LoveProblem").style.display = "none";
     }
 }
 
 // De Setlimit() functie zorgt ervoor dat de value bars niet boven en onder bepaalde values kunnen komen
 function setLimit() {
-    if (HungerValue >= 100){
-        HungerValue = 100;
-    } else if (HungerValue <= 0){
-        HungerValue = 0;
+    if (hungerValue >= 100){
+        hungerValue = 100;
+    } else if (hungerValue <= 0){
+        hungerValue = 0;
     } 
 
-    if (EnergyValue >= 100){
-        EnergyValue = 100;
-    } else if(EnergyValue <= 0){
-        EnergyValue = 0;
+    if (energyValue >= 100){
+        energyValue = 100;
+    } else if(energyValue <= 0){
+        energyValue = 0;
     } else if (isSleeping == true){
-        EnergyValue++;
+        energyValue++;
     }
 
-    if (AffectionValue >= 100){
-        AffectionValue = 100;
-    } else if (AffectionValue <= 0){
-        AffectionValue = 0;
+    if (affectionValue >= 100){
+        affectionValue = 100;
+    } else if (affectionValue <= 0){
+        affectionValue = 0;
     }
 
     if(timeLeft == 0){
@@ -286,7 +286,7 @@ function setLimit() {
 // De komende drie functies zorgen ervoor dat de valuebuttons functioneel zijn en dat er een value af of bij komt
 // De code lijkt super veel op elkaar, maar als ik ze gebruik via parameters kloppen de functies niet meer :(
 function increaseHunger() {
-    HungerValue += Math.floor(Math.random() * hungerValueIncrease);
+    hungerValue += Math.floor(Math.random() * hungerValueIncrease);
     disableButton(feedKnop, "feed", "disabledfeed", 2000);
     eatingAudio.play();
     inActive = false;
@@ -299,7 +299,7 @@ function increaseHunger() {
 }
 
 function increaseAffection() {
-    AffectionValue += Math.floor(Math.random() * 8);
+    affectionValue += Math.floor(Math.random() * 8);
     disableButton(affectionKnop, "affection", "disabledaffection", 2000);
     lovedAudio.play();
     isLoved = true;
@@ -312,7 +312,7 @@ function increaseAffection() {
 }
 
 function decreaseEnergy() {
-    EnergyValue -= Math.floor(Math.random() * energyDecrease);
+    energyValue -= Math.floor(Math.random() * energyDecrease);
     disableButton(energyKnop, "energy", "disabledeenergy", 3500);
     isExcercising = true;
     inActive = false;
@@ -325,15 +325,15 @@ function decreaseEnergy() {
 
 // Veranderdt de classes en update de buttons doro de updateButtons() functie aan te roepen en toe te passen
 function arrowUpdate(){
-    Background.removeAttribute("class");
+    background.removeAttribute("class");
     if(backgroundChoice == 0){
-        Background.classList.add("homebackground");
+        background.classList.add("homebackground");
         updateButtons("Feed", "Energy", "Affection", "Left", "Right", "inline-block", "inline-block");
     } else if(backgroundChoice == 1){
-        Background.classList.add("foodbackground");
+        background.classList.add("foodbackground");
         updateButtons("Affection", "Energy", "Feed", "Left", "Right", "none", "inline-block");
     } else if(backgroundChoice == -1){
-        Background.classList.add("excercisebackground");
+        background.classList.add("excercisebackground");
         updateButtons("Feed", "Affection", "Energy", "Left", "Right", "inline-block", "none");
     } 
 }
@@ -364,7 +364,7 @@ function hamsterAsleep(){
     isSleeping = true;
     inActive = false;
     chargedEnergy++;
-    if(EnergyValue == 100){
+    if(energyValue == 100){
         document.getElementById("asleepOverlay").style.display = 'none';
         hamsterCurrentImg.src="img/HamsterImages/Hamster.png";
         isSleeping = false;
@@ -461,8 +461,8 @@ confirmName.addEventListener('click', saveName);
 
 // Deze laatste eventlisteners zijn anders dan de standaard, deze eventlisteners reguleren de shop buttons in de shop overlay, elke eeft zijn eigen berekening
 shopButton[7].addEventListener("click", energyDrainBuff);
-shopButton[8].addEventListener("click", () => { valueBuff(8); HungerValue = 100;});
-shopButton[9].addEventListener("click", () => { valueBuff(8); AffectionValue = 100;});
+shopButton[8].addEventListener("click", () => { valueBuff(8); hungerValue = 100;});
+shopButton[9].addEventListener("click", () => { valueBuff(8); affectionValue = 100;});
 
 for (let i = 0; i < 7; i++) {
     shopButton[i].addEventListener("click", function(){
