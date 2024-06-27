@@ -153,7 +153,7 @@ class ValueBar {
     }
 }
 
-// de constante van de value bars, hier worden de dimensies aangeroepen en bepaald
+// de objecten van de value bars, hier worden de dimensies aangeroepen en bepaald
 feedBar = new ValueBar(x, 40, valueBarwidth, valueBarHeight, hungerValue, "blue");
 energyBar = new ValueBar(x, 90, valueBarwidth, valueBarHeight, energyValue, "red");
 affectionBar = new ValueBar(x, 140, valueBarwidth, valueBarHeight, affectionValue, "yellow");
@@ -323,7 +323,7 @@ function decreaseEnergy() {
      },3500);
 }
 
-// Veranderdt de classes en update de buttons doro de updateButtons() functie aan te roepen en toe te passen
+// Veranderdt de classes en update de buttons door de updateButtons() functie aan te roepen en toe te passen
 function arrowUpdate(){
     background.removeAttribute("class");
     if(backgroundChoice == 0){
@@ -464,6 +464,7 @@ shopButton[7].addEventListener("click", energyDrainBuff);
 shopButton[8].addEventListener("click", () => { valueBuff(8); hungerValue = 100;});
 shopButton[9].addEventListener("click", () => { valueBuff(8); affectionValue = 100;});
 
+// voor elke shopbutton van 0 tot 7 er is een uitgerekende value inplaats van een vaste value gegeven via deze code
 for (let i = 0; i < 7; i++) {
     shopButton[i].addEventListener("click", function(){
         if(foodCurrency == (i + 1) || foodCurrency > (i + 1)){
